@@ -4,6 +4,8 @@ create table if not exists public.appointments (
   id uuid primary key default gen_random_uuid(),
   customer_name text not null,
   customer_phone text not null,
+  symptom text not null default '',
+  duration text not null default '',
   therapist_name text not null,
   appointment_date date not null,
   appointment_time text not null,
@@ -11,6 +13,12 @@ create table if not exists public.appointments (
   status text not null default 'pending',
   created_at timestamptz not null default now()
 );
+
+alter table public.appointments
+  add column if not exists symptom text not null default '';
+
+alter table public.appointments
+  add column if not exists duration text not null default '';
 
 create table if not exists public.admin_users (
   user_id uuid primary key references auth.users(id) on delete cascade,
@@ -173,6 +181,8 @@ begin
       'appointment_id', new.id,
       'customer_name', new.customer_name,
       'customer_phone', new.customer_phone,
+      'symptom', new.symptom,
+      'duration', new.duration,
       'therapist_name', new.therapist_name,
       'appointment_date', new.appointment_date,
       'appointment_time', new.appointment_time,

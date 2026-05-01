@@ -18,6 +18,8 @@ const TIME_SLOTS = [
 const INITIAL_FORM = {
   customer_name: '',
   customer_phone: '',
+  symptom: '',
+  duration: '',
   therapist_name: THERAPISTS[0],
   appointment_date: '',
   appointment_time: TIME_SLOTS[0],
@@ -129,6 +131,8 @@ function App() {
     const payload = {
       customer_name: form.customer_name.trim(),
       customer_phone: form.customer_phone.trim(),
+      symptom: form.symptom.trim(),
+      duration: form.duration.trim(),
       therapist_name: form.therapist_name,
       appointment_date: form.appointment_date,
       appointment_time: form.appointment_time,
@@ -295,6 +299,26 @@ function App() {
               />
             </label>
             <label>
+              症狀
+              <input
+                name="symptom"
+                value={form.symptom}
+                onChange={updateField}
+                placeholder="例如：肩頸痠痛、腰緊繃"
+                required
+              />
+            </label>
+            <label>
+              持續時間
+              <input
+                name="duration"
+                value={form.duration}
+                onChange={updateField}
+                placeholder="例如：2 週、3 個月"
+                required
+              />
+            </label>
+            <label>
               調理師
               <select
                 name="therapist_name"
@@ -426,6 +450,8 @@ function App() {
                         <th>時間</th>
                         <th>客戶</th>
                         <th>電話</th>
+                        <th>症狀</th>
+                        <th>持續時間</th>
                         <th>調理師</th>
                         <th>狀態</th>
                         <th>操作</th>
@@ -438,6 +464,8 @@ function App() {
                           <td>{item.appointment_time}</td>
                           <td>{item.customer_name}</td>
                           <td>{item.customer_phone}</td>
+                          <td>{item.symptom || '-'}</td>
+                          <td>{item.duration || '-'}</td>
                           <td>{item.therapist_name}</td>
                           <td>{statusText[item.status] ?? item.status}</td>
                           <td className="actions">
@@ -462,7 +490,7 @@ function App() {
                       ))}
                       {bookings.length === 0 && (
                         <tr>
-                          <td colSpan={7}>目前沒有預約資料</td>
+                          <td colSpan={9}>目前沒有預約資料</td>
                         </tr>
                       )}
                     </tbody>
