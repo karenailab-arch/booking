@@ -3,7 +3,12 @@ body {
   margin: 0;
   font-family: 'Noto Sans TC', 'Segoe UI', sans-serif;
   color: #3d2f25;
-  background: radial-gradient(circle at top left, #f9f4ea 0%, #f1e8dc 42%, #e9dfd1 100%);
+  background-color: #f1e7d8;
+  background-image: url('/healing-earth-bg.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   min-height: 100vh;
   line-height: 1.5;
 }

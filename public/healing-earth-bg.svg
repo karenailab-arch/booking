@@ -1,0 +1,39 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="baseGradient" x1="208" y1="80" x2="1712" y2="1000" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FAF5EC"/>
+      <stop offset="0.42" stop-color="#F2E8DB"/>
+      <stop offset="1" stop-color="#E8DDCC"/>
+    </linearGradient>
+    <radialGradient id="softGlowA" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(320 220) rotate(16) scale(540 420)">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="softGlowB" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1620 180) rotate(12) scale(430 320)">
+      <stop offset="0" stop-color="#8A9A74" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="#8A9A74" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="softGlowC" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1560 860) rotate(-20) scale(500 380)">
+      <stop offset="0" stop-color="#B7987B" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#B7987B" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blurLarge" x="-120" y="-120" width="2160" height="1320" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="28"/>
+    </filter>
+  </defs>
+
+  <rect width="1920" height="1080" fill="url(#baseGradient)"/>
+
+  <g filter="url(#blurLarge)">
+    <path d="M-120 820C120 730 240 700 430 748C602 792 700 874 936 870C1140 866 1242 774 1452 782C1648 790 1764 856 2040 822V1240H-120V820Z" fill="#DCCDBA" fill-opacity="0.42"/>
+    <path d="M-80 684C180 640 284 602 470 640C680 684 762 786 980 804C1172 820 1312 742 1506 712C1668 688 1786 706 2020 758V1240H-80V684Z" fill="#EADFCF" fill-opacity="0.6"/>
+    <path d="M-160 500C92 468 212 482 402 536C590 588 694 666 910 672C1126 678 1228 600 1428 572C1652 542 1764 560 2040 626V1240H-160V500Z" fill="#E6D8C5" fill-opacity="0.34"/>
+  </g>
+
+  <ellipse cx="1520" cy="236" rx="270" ry="138" transform="rotate(-8 1520 236)" fill="#E4EDDA" fill-opacity="0.35"/>
+  <ellipse cx="420" cy="900" rx="320" ry="156" transform="rotate(5 420 900)" fill="#F0E4D2" fill-opacity="0.44"/>
+
+  <rect width="1920" height="1080" fill="url(#softGlowA)"/>
+  <rect width="1920" height="1080" fill="url(#softGlowB)"/>
+  <rect width="1920" height="1080" fill="url(#softGlowC)"/>
+</svg>
