@@ -1,8 +1,23 @@
 body {
+  position: relative;
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  color: #1f2937;
-  background: #f7f8fa;
+  font-family: 'Noto Sans TC', 'Segoe UI', sans-serif;
+  color: #3d2f25;
+  background: radial-gradient(circle at top left, #f9f4ea 0%, #f1e8dc 42%, #e9dfd1 100%);
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0) 30%),
+    radial-gradient(circle at 85% 12%, rgba(116, 132, 102, 0.12) 0%, rgba(116, 132, 102, 0) 28%),
+    radial-gradient(circle at 75% 78%, rgba(160, 134, 113, 0.12) 0%, rgba(160, 134, 113, 0) 30%);
+  z-index: -1;
 }
 
 h1,

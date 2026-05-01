@@ -1,15 +1,56 @@
+:root {
+  --earth-900: #4a3a30;
+  --earth-800: #5e4a3d;
+  --earth-700: #766153;
+  --earth-500: #a08671;
+  --earth-300: #d4c4b3;
+  --earth-200: #eee3d6;
+  --earth-100: #faf4eb;
+  --leaf-500: #748466;
+  --leaf-100: #edf3e6;
+  --alert-500: #9c4f3f;
+}
+
 .page {
   max-width: 1080px;
   margin: 0 auto;
-  padding: 24px 16px 40px;
+  padding: 32px 16px 48px;
 }
 
 .topbar {
+  position: relative;
   display: flex;
   gap: 16px;
   justify-content: space-between;
   align-items: flex-end;
   flex-wrap: wrap;
+  padding: 18px 20px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #fbf7ef 0%, #f2e8da 60%, #ecdfcf 100%);
+  border: 1px solid rgba(212, 196, 179, 0.72);
+  box-shadow: 0 12px 30px rgba(103, 82, 66, 0.1);
+  overflow: hidden;
+}
+
+.topbar::after {
+  content: '';
+  position: absolute;
+  inset: auto -30px -60px auto;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(116, 132, 102, 0.16) 0%, rgba(116, 132, 102, 0) 70%);
+  pointer-events: none;
+}
+
+.topbar h1 {
+  color: var(--earth-900);
+  letter-spacing: 0.02em;
+}
+
+.topbar p {
+  margin-top: 6px;
+  color: var(--earth-700);
 }
 
 .switcher {
@@ -18,34 +59,58 @@
 }
 
 button {
-  border: 1px solid #d7dce2;
-  background: white;
-  padding: 8px 12px;
-  border-radius: 8px;
+  border: 1px solid var(--earth-300);
+  background: rgba(255, 251, 244, 0.92);
+  color: var(--earth-800);
+  padding: 10px 14px;
+  border-radius: 999px;
   cursor: pointer;
+  font-weight: 600;
+  transition: all 0.24s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  border-color: var(--earth-500);
+  box-shadow: 0 8px 20px rgba(89, 70, 56, 0.14);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+  transform: none;
+  box-shadow: none;
 }
 
 .switcher .active,
 .primary {
-  background: #0f62fe;
-  color: white;
-  border-color: #0f62fe;
+  background: linear-gradient(135deg, #8a755f 0%, #6d8061 100%);
+  color: #fffaf2;
+  border-color: #6f7b5e;
 }
 
 .message {
-  margin-top: 14px;
-  color: #084298;
-  background: #e7f1ff;
-  padding: 10px 12px;
-  border-radius: 8px;
+  margin-top: 16px;
+  color: var(--earth-800);
+  background: linear-gradient(120deg, #fbf3e8 0%, #f6eddf 100%);
+  border: 1px solid rgba(212, 196, 179, 0.85);
+  padding: 12px 14px;
+  border-radius: 14px;
 }
 
 .panel {
   margin-top: 20px;
-  border: 1px solid #d7dce2;
-  border-radius: 12px;
-  padding: 18px;
-  background: #ffffff;
+  border: 1px solid rgba(212, 196, 179, 0.72);
+  border-radius: 20px;
+  padding: 22px;
+  background: linear-gradient(180deg, rgba(255, 252, 245, 0.96) 0%, rgba(252, 246, 237, 0.92) 100%);
+  box-shadow: 0 16px 36px rgba(93, 74, 60, 0.09);
+  backdrop-filter: blur(2px);
+}
+
+.panel h2,
+.panel h3 {
+  color: var(--earth-900);
 }
 
 .grid-form {
@@ -59,15 +124,26 @@ label {
   flex-direction: column;
   gap: 6px;
   font-weight: 600;
+  color: var(--earth-800);
 }
 
 input,
 select,
 textarea {
-  border: 1px solid #c8cfd8;
-  border-radius: 8px;
-  padding: 10px;
+  border: 1px solid var(--earth-300);
+  border-radius: 14px;
+  padding: 11px 12px;
   font-size: 15px;
+  background: rgba(255, 255, 252, 0.9);
+  color: var(--earth-900);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--earth-500);
+  box-shadow: 0 0 0 4px rgba(160, 134, 113, 0.2);
 }
 
 .full {
@@ -76,7 +152,7 @@ textarea {
 
 .hint {
   margin-top: 8px;
-  color: #4b5563;
+  color: var(--earth-700);
 }
 
 .login-form {
@@ -88,8 +164,8 @@ textarea {
 
 .logs {
   margin-top: 24px;
-  padding-top: 16px;
-  border-top: 1px solid #e5e7eb;
+  padding-top: 18px;
+  border-top: 1px dashed rgba(160, 134, 113, 0.45);
 }
 
 .admin-head {
@@ -102,6 +178,9 @@ textarea {
 
 .table-wrap {
   overflow-x: auto;
+  border: 1px solid rgba(212, 196, 179, 0.72);
+  border-radius: 16px;
+  background: rgba(255, 251, 244, 0.86);
 }
 
 table {
@@ -109,12 +188,25 @@ table {
   border-collapse: collapse;
 }
 
+thead {
+  background: linear-gradient(180deg, #f6ecde 0%, #efe1cf 100%);
+}
+
 th,
 td {
-  border-bottom: 1px solid #e7ebf0;
-  padding: 10px 8px;
+  border-bottom: 1px solid var(--earth-200);
+  padding: 12px 10px;
   text-align: left;
   font-size: 14px;
+}
+
+th {
+  color: var(--earth-800);
+  font-weight: 700;
+}
+
+tbody tr:nth-child(even) {
+  background: rgba(246, 238, 227, 0.58);
 }
 
 .actions {
@@ -124,7 +216,14 @@ td {
 }
 
 .danger {
-  color: #b42318;
+  color: var(--alert-500);
+  border-color: #e0bbb3;
+  background: #fff5f2;
+}
+
+.danger:hover {
+  border-color: var(--alert-500);
+  box-shadow: 0 4px 14px rgba(156, 79, 63, 0.2);
 }
 
 @media (max-width: 720px) {
