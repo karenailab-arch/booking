@@ -81,8 +81,16 @@ grant execute on function public.is_admin() to anon, authenticated;
 create policy "appointments insert public"
 on public.appointments
 for insert
-to anon
-with check (true);
+to anon, authenticated
+with check (
+  status = 'pending'
+  and length(btrim(customer_name)) > 0
+  and length(btrim(customer_phone)) > 0
+  and customer_phone ~ '^09[0-9]{8}$'
+  and length(btrim(symptom)) > 0
+  and length(btrim(duration)) > 0
+  and appointment_date >= current_date
+);
 
 -- 後台僅管理員可讀
 create policy "appointments select admin only"

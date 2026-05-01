@@ -125,14 +125,36 @@ function App() {
 
   async function submitBooking(event) {
     event.preventDefault()
-    setSubmitting(true)
     setMessage('')
 
+    const trimmedName = form.customer_name.trim()
+    const trimmedPhone = form.customer_phone.trim()
+    const trimmedSymptom = form.symptom.trim()
+    const trimmedDuration = form.duration.trim()
+    const today = new Date().toISOString().slice(0, 10)
+
+    if (!trimmedName || !trimmedPhone || !trimmedSymptom || !trimmedDuration) {
+      setMessage('姓名、電話、症狀與持續時間不可空白。')
+      return
+    }
+
+    if (!/^09\d{8}$/.test(trimmedPhone)) {
+      setMessage('電話格式錯誤，請輸入 09 開頭的 10 碼手機號碼。')
+      return
+    }
+
+    if (!form.appointment_date || form.appointment_date < today) {
+      setMessage('預約日期不可早於今天。')
+      return
+    }
+
+    setSubmitting(true)
+
     const payload = {
-      customer_name: form.customer_name.trim(),
-      customer_phone: form.customer_phone.trim(),
-      symptom: form.symptom.trim(),
-      duration: form.duration.trim(),
+      customer_name: trimmedName,
+      customer_phone: trimmedPhone,
+      symptom: trimmedSymptom,
+      duration: trimmedDuration,
       therapist_name: form.therapist_name,
       appointment_date: form.appointment_date,
       appointment_time: form.appointment_time,
@@ -339,6 +361,7 @@ function App() {
                 name="appointment_date"
                 value={form.appointment_date}
                 onChange={updateField}
+                min={new Date().toISOString().slice(0, 10)}
                 required
               />
             </label>
